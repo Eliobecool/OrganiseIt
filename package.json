@@ -1,0 +1,22 @@
+{
+  "name": "organizeit",
+  "version": "1.0.0",
+  "description": "Organize It Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "babel-node spec/run.js"
+  },
+  "author": "Groupe C",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.1.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "consolidate": "^0.15.1",
+    "express": "^4.16.3",
+    "express-mongo-db": "^2.0.4",
+    "hogan": "^1.0.2"
+  }
+}

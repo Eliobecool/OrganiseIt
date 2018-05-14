@@ -1,0 +1,30 @@
+body
+{
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+}
+
+#bloc_page
+{
+	/*background-image: url(images/fond53.jpg);*/
+	height: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a 
+{
+    width: 900px;
+    height: 300px;
+    background-color: black;
+    	display: flex;
+	justify-content: center;
+	border-radius: 40px;
+}
+img 
+{
+	width: 300px;
+}
+

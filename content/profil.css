@@ -1,0 +1,120 @@
+body
+{
+    background: url('images/gris.png');
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+}
+
+#bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+header
+{
+    background: url('images/separateuro.png') repeat-x bottom;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img 
+{
+    width: 400px;
+    height: 400px;
+}
+
+#titre 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+header h1 
+{
+    margin: auto;
+    font-size: 2.8em;
+    color: orange;
+}
+
+
+/* Navigation */
+nav ul 
+{
+    display: flex;
+    list-style-type: none;
+}
+
+nav li 
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1.3em;
+    color: rgb(253, 197, 2);
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+nav a:hover
+{
+    color: orange;
+    border-bottom: 3px solid orange;
+}
+
+
+section 
+{
+    display: flex;
+    justify-content: left-start;
+    color: orange;
+}
+
+
+article 
+{
+    margin-top: 10px; 
+    margin-left: 100px;
+    color: white;
+    display: flex;
+    background: url(images/fiche2.jpg) no-repeat;
+    width: 329px;
+    height: 153px;
+}
+
+section article table
+{
+    margin-top: 10px;
+}
+
+footer 
+{
+    display: flex;
+    background: url(images/separateurfoo.jpg) repeat-x top;   
+}
+
+#yo 
+{
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+footer h1 
+{
+    color : orange;
+}
+
+footer ul
+{
+    display: flex;
+    list-style-type: none;
+}
+
+footer li
+{
+    margin-right: 30px;
+}

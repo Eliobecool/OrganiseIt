@@ -1,0 +1,4 @@
+{ "username" : "andres95", "type": "client", "name": "andres", "surname": "fernandes", "adress": "Rue de la ferme blanche, 10. 1490 Court-St-Etienne", "email": "andres.fernandes@student.uclouvain.be", "gender": "male", "password": "1234"}
+{ "username" : "elio234", "type": "client", "name": "elio", "surname": "pani", "adress": "Rue des Pommiers, 20. 1348 Louvain-la-Neuve", "email": "elio.pani@student.uclouvain.be", "gender": "male", "password": "5678"}
+{ "username" : "vincent1976", "type": "client", "name": "vincent", "surname": "verpoten", "adress": "Rue des Voiture, 4. 1348 Louvain-la-Neuve", "email": "vincent.verpoten@student.uclouvain.be", "gender": "male", "password": "9123"}
+

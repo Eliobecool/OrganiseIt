@@ -1,0 +1,210 @@
+body
+{
+    background: url('images/gris.png');
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+}
+
+#bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+#log 
+{
+    display: flex;
+    justify-content: flex-start;
+}
+
+header img 
+{
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+
+}
+
+header h1 
+{
+    margin: auto;
+    margin-left: 10px;
+    font-size: 1em;
+    color: white;
+}
+
+
+/* Navigation */
+nav ul 
+{
+    display: flex;
+    list-style-type: none;
+}
+
+nav li 
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1em;
+    color: white;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+nav a:hover
+{
+    color: #d6d4d2;
+}
+
+section 
+{
+    color: black;
+}
+
+#rock
+{
+    width: 900px;
+    height: 300px;
+    background-image: url("images/rock.jpg");
+    background-size: 900px auto;
+}
+
+#create 
+{
+    width: 450px;
+    border-left: 2px solid black;
+    border-right: 3px solid black;
+}
+
+#login
+{
+    width: 450px;
+    border-left: 3px solid black;
+    border-right: 2px solid black;
+}
+
+#ez
+{
+    position: relative;
+    left: 100px;
+    top: 50px;
+}
+
+#ezi
+{
+    top: 20px;
+    position: relative;
+    left: 75px;
+}
+
+article label + input
+{
+    margin-bottom: 10px;
+}
+
+article 
+{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1px;
+    border-top: 2px solid black;
+}
+
+#bouton1
+{
+    position: relative;
+    left: 60px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    background: black;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+#bouton1 a 
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+#bouton1:hover
+{
+    background-color: #303030;
+    text-decoration: none;
+}
+
+#bouton2
+{
+    position: relative;
+    left: 30px;
+    margin-top: 50px;
+    background: black;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+#bouton2 a 
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+#bouton2:hover
+{
+    background-color: #303030;
+    text-decoration: none;
+}
+
+
+footer 
+{
+    display: flex;
+    background-color: black;   
+}
+
+#yo 
+{
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    height: 50px;
+}
+
+footer h1 
+{
+    color : white;
+    margin-top: 10px;
+}
+
+footer ul
+{
+    margin-top: 10px;
+    color: white;
+    display: flex;
+    list-style-type: none;
+}
+
+footer li
+{
+    margin-right: 30px;
+}

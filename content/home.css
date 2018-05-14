@@ -1,0 +1,175 @@
+body
+{
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+}
+
+#bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+#log 
+{
+	display: flex;
+	justify-content: flex-start;
+}
+
+header img 
+{
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+
+}
+
+header h1 
+{
+    margin: auto;
+    margin-left: 10px;
+    font-size: 1em;
+    color: white;
+}
+
+
+/* Navigation */
+nav ul 
+{
+    display: flex;
+    list-style-type: none;
+}
+
+nav li 
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1em;
+    color: white;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+nav a:hover
+{
+    color: #d6d4d2;
+}
+
+#banner
+{
+	margin-top: 10px;
+	background: url("images/event.jpg");
+	background-size: 900px 500px;
+	width: 900px;
+	height: 500px
+
+}
+
+#start
+{
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: 300px;
+	left: 250px;
+	color: white;
+    font-size: 4em;
+    width: 400px;
+    border: 6px solid white;
+    z-index: 2;
+}
+
+#start a
+{
+	color: white;
+	text-decoration: none;
+}
+
+#start a:hover
+{
+	color: #d6d4d2;
+	text-decoration: none;
+}
+
+#opac
+{
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: 220px;
+	left: 256px;
+    width: 400px;
+    height: 74px;
+    background-color: black;
+    opacity: 0.50;
+    z-index: 1;
+}
+
+section article
+{
+	border-left: 2px solid black;
+	border-right: 2px solid black; 
+	border-bottom: 2px solid black;
+}
+
+section article h1,p 
+{
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+section article h1 
+{
+	background : black;
+	color: white;
+}
+
+section article p 
+{
+	color: black;
+	font-weight: bold;
+}
+
+
+footer 
+{
+    display: flex;
+    background-color: black;   
+}
+
+#yo 
+{
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    height: 50px;
+}
+
+footer h1 
+{
+    color : white;
+    margin-top: 10px;
+}
+
+footer ul
+{
+	margin-top: 10px;
+	color: white;
+    display: flex;
+    list-style-type: none;
+}
+
+footer li
+{
+    margin-right: 30px;
+}
