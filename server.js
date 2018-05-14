@@ -34,10 +34,10 @@ MongoClient.connect(url, function(err, db) {
 
 /*----------------DROP OLD COLLECTIONS-------------------*/
 
-dbo.collection("users").drop(function(err, delOK) {
-    if (err) throw err;
-    if (delOK) console.log("Collections initiated");
-  });
+//dbo.collection("users").drop(function(err, delOK) {
+  //  if (err) throw err;
+   // if (delOK) console.log("Collections initiated");
+  //});
   
   dbo.collection("agencies").drop(function(err, delOK) {
     if (err) throw err;
@@ -79,7 +79,7 @@ app.get('/createaccount', function(req,res,next) {
          });
      
      dbo.collection("users").findOne({}, (err, doc) => {
-        res.render('profile_app.html', {username : doc.username, type: doc.type, name: doc.name, surname: doc.surname, adress: doc.adress, email: doc.email, gender: doc.ender, password: doc.password});
+        res.render('profile.html', {username : doc.username, type: doc.type, name: doc.name, surname: doc.surname, adress: doc.adress, email: doc.email, gender: doc.ender, password: doc.password});
       dbo.close(); 
       });
    
