@@ -65,6 +65,7 @@ MongoClient.connect(url, function(err, db) {
 /*------------------QUERY TREATEMENT---------------------*/
 /*-------------------------------------------------------*/
 
+/*------------------CREATE ACCOUNT---------------------*/
 app.get('/createaccount', function(req,res,next) {
 
   MongoClient.connect(url, function(err, db) {
@@ -85,6 +86,32 @@ app.get('/createaccount', function(req,res,next) {
    
    });
 });
+
+/*------------------LOGIN ACCOUNT---------------------*/
+app.get('/login', function(req,res,next) {
+
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("organizeitdb");
+           
+     dbo.collection("users").find({}, { _id: 0, username: 1}).toArray(function(err, results) => 
+     {
+      if (results.length<1)
+        res.render('profile.html', {username : doc.username, type: doc.type, name: doc.name, surname: doc.surname, adress: doc.adress, email: doc.email, gender: doc.ender, password: doc.password});
+      dbo.close(); 
+      });
+   
+   });
+});
+/*-------------------------------------------------------*/
+/*------------------QUERY TREATEMENT---------------------*/
+/*-------------------------------------------------------*/
+function verifyLogin(inputUsername, dbUsername)
+{
+  if (inputUsername.localCompare(dbUsername)==0) return true;
+    else return false;
+}
+
 /*-------------------------------------------------------*/
 /*-------------------------------------------------------*/
 /*-------------------------------------------------------*/
