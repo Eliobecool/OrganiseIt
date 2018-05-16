@@ -34,20 +34,20 @@ MongoClient.connect(url, function(err, db) {
 
   /*----------------DROP OLD COLLECTIONS-------------------*/
 
-  // dbo.collection("users").drop(function(err, delOK) {
-  //   if (err) console.log("No Collection with users was found");
-  //   if (delOK) console.log("Collections Users dropped");
-  //   });
+  dbo.collection("users").drop(function(err, delOK) {
+    if (err) console.log("No Collection with users was found");
+    if (delOK) console.log("Collections Users dropped");
+    });
 
-  // dbo.collection("agencies").drop(function(err, delOK) {
-  //   if (err) 
-  //    console.log("No Collection with agencies was found");
-  //   if (delOK) console.log("Collections Agencies dropped");
-  //   });
+  dbo.collection("agencies").drop(function(err, delOK) {
+    if (err) 
+     console.log("No Collection with agencies was found");
+    if (delOK) console.log("Collections Agencies dropped");
+    });
 
     /*--------------------CREATING NEW COLLECTIONS--------------------*/
 
-    var administrator = {username : "admin", type: "admin", name: "name", surname: "surname", adress: "Rue de la ferme blanche 10", email: "contact@ognaizeit.be", gender: "male", password: "admin"};
+    var administrator = {username : "admin", type: "admin", name: "name", surname: "surname", adress: "Rue de la ferme blanche 10", email: "contact@organizeit.be", gender: "male", password: "admin"};
     var agencies1 = 
     [
     { name : "organize it", adress: "Rue de la ferme blanche, 10. 1490 Court-St-Etienne", email: "contact@organizeit.be", website: "www.organizeit.be", vatnumber: "BE1234567890", phone: "+32477633634"},
@@ -55,8 +55,10 @@ MongoClient.connect(url, function(err, db) {
     { name : "profirst", adress: "Rue des Voitures, 4. 1348 Louvain-la-Neuve", email: "mgmt@extraevent.be", website: "contact@profirst.be", vatnumber: "BE1029384756", phone: "+32477633631"}
     ];
 
+    //console.log(administrator);
+    //console.log(administrator.username);
     addUser(administrator);
-    addAgencies(agencies1);
+    // addAgencies(agencies1);
     
 
 //dbo.collection("agencies").insertMany(agencies1, function(err, res) {
@@ -70,6 +72,7 @@ MongoClient.connect(url, function(err, db) {
    // console.log("Number of users inserted: " + res.insertedCount);
    // db.close();
 //});
+
 });
 
 /*-------------------------------------------------------*/
@@ -118,11 +121,7 @@ app.get('/login', function(req,res,next) {
 /*-------------------------------------------------------*/
 /*------------------ALL FUNCTIONS---------------------*/
 /*-------------------------------------------------------*/
-        //function verifyLogin(inputUsername, dbUsername)
-        //{
-         // if (inputUsername.localCompare(dbUsername)==0) return true;
-           // else return false;
-        //}
+    
 
         /*------------------USERS RELATED---------------------*/
         function userExist(inputUsername)
@@ -130,21 +129,21 @@ app.get('/login', function(req,res,next) {
         	MongoClient.connect(url, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("organizeitdb");
-                var query = { username: inputUsername };
-
-                dbo.collection("users").find(query).toArray(function(err, results)
+                // var query = { username: inputUsername.username };
+                
+                console.log("userExist Input Test:");
+                console.log(inputUsername);
+                dbo.collection("users").find({username : "admin"}).toArray(function(err, results)
                 {
-                  if (results.length>0)
-                  {
-                     dbo.close(); 
-                     return true;
-                 }
-                 else
-                 {
-                     dbo.close(); 
-                     return false;
-                 }
-             });
+                     console.log(results);
+                    if (err) throw err;
+                    if (results.length0)
+                        dbo.close();
+                        return true;
+                    if (results.length<1)
+                        dbo.close();
+                        return false;
+                });
             });
         }
 
@@ -154,98 +153,95 @@ app.get('/login', function(req,res,next) {
                 if (err) throw err;
                 var dbo = db.db("organizeitdb");
 
-                console.log(String(userExist(insertingUser)));
-                if(userExist(insertingUser)==true)
-                {
-                 console.log(".");
-                }
-             else
-             {
-                dbo.collection("users").insertOne(insertingUser, function(err, res) {
+                console.log("addUser Input Test:");
+                console.log(insertingUser.username);
+
+                if(userExist(insertingUser.username)==true) console.log(".");
+                if(userExist(insertingUser.username)==false)
+                    dbo.collection("users").insertOne(insertingUser, function(err, res) {
                     if (err) throw err;
                     console.log("Number of users inserted: " + res.insertedCount);
                     db.close();
                 });           
-            }
         });
         }
 
         /*------------------AGENCIES RELATED---------------------*/
-        function angencyExist(inputAgency)
-        {
-           MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("organizeitdb");
-            var query = { name: inputAgency };
+     //    function angencyExist(inputAgency)
+     //    {
+     //       MongoClient.connect(url, function(err, db) {
+     //        if (err) throw err;
+     //        var dbo = db.db("organizeitdb");
+     //        var query = { name: inputAgency };
 
-            dbo.collection("agencies").find(query).toArray(function(err, results)
-            {
-              if (results.length>0)
-              {
-                 dbo.close(); 
-                 return true;
-             }
-             else{
-                 dbo.close(); 
-                 return false;
-             }
-         });
-        });
-       }
+     //        dbo.collection("agencies").find(query).toArray(function(err, results)
+     //        {
+     //          if (results.length>0)
+     //          {
+     //             dbo.close(); 
+     //             return true;
+     //         }
+     //         else{
+     //             dbo.close(); 
+     //             return false;
+     //         }
+     //     });
+     //    });
+     //   }
 
 
 
-       function addAgencies(insertingAgencies)
-       {
-         MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("organizeitdb");
+     //   function addAgencies(insertingAgencies)
+     //   {
+     //     MongoClient.connect(url, function(err, db) {
+     //        if (err) throw err;
+     //        var dbo = db.db("organizeitdb");
 
             
 
-            for (i = 0; i < insertingAgencies.length ; i++) 
-            {
-                console.log(String(userExist(insertingAgencies[i])));
-                if(angencyExist(insertingAgencies[i])==true)
-                {
-                 console.log(".");
+     //        for (i = 0; i < insertingAgencies.length ; i++) 
+     //        {
+     //            console.log(String(userExist(insertingAgencies[i])));
+     //            if(angencyExist(insertingAgencies[i])==true)
+     //            {
+     //             console.log(".");
 
-             }
-             else
-             {
+     //         }
+     //         else
+     //         {
 
-                 dbo.collection("agencies").insertOne(insertingAgencies[i], function(err, res) {
-                    if (err) throw err;
-                    console.log("Number of agencies inserted: " + res.insertedCount);
-                    db.close();
-                });
+     //             dbo.collection("agencies").insertOne(insertingAgencies[i], function(err, res) {
+     //                if (err) throw err;
+     //                console.log("Number of agencies inserted: " + res.insertedCount);
+     //                db.close();
+     //            });
 
 
-             }
-         }
-     });
-     }
-     function addAgency(insertingAgency)
-     {
-         MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("organizeitdb");
+     //         }
+     //     }
+     // });
+     // }
+     // function addAgency(insertingAgency)
+     // {
+     //     MongoClient.connect(url, function(err, db) {
+     //        if (err) throw err;
+     //        var dbo = db.db("organizeitdb");
 
-            if(angencyExist(insertingAgency)==true){
+     //        if(angencyExist(insertingAgency)==true){
 
-                console.log(".");
-            }
-            else
-            {
-                dbo.collection("agencies").insertOne(insertingAgency, function(err, res) {
-                    if (err) throw err;
-                    console.log("Number of agencies inserted: " + res.insertedCount);
-                    db.close();
-                });
+     //            console.log(".");
+     //        }
+     //        else
+     //        {
+     //            dbo.collection("agencies").insertOne(insertingAgency, function(err, res) {
+     //                if (err) throw err;
+     //                console.log("Number of agencies inserted: " + res.insertedCount);
+     //                db.close();
+     //            });
 
-            }
-        });
-     }
+     //        }
+     //    });
+     // }
 
 
 
