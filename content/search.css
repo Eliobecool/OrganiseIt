@@ -103,16 +103,10 @@ article label + select
     border-radius: 20px;
     width: 200px;
     height: 50px;
-}
-
-#bouton a
-{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: 15px;
     color: black;
-    text-decoration: none;
+    font-size: 1em;
+    box-sizing: content-box;
+    border-width: 0px;
 }
 
 #bouton:hover 

@@ -1,8 +1,8 @@
 body
 {
-    background: black;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
+    background: black;
 }
 
 #bloc_page
@@ -13,29 +13,32 @@ body
 
 header
 {
-    background: url('images/separateuro.png') repeat-x bottom;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: black;
+}
+
+#log 
+{
+    display: flex;
+    justify-content: flex-start;
 }
 
 header img 
 {
-    width: 400px;
-    height: 400px;
-}
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
 
-#titre 
-{
-    display: flex;
-    flex-direction: column;
 }
 
 header h1 
 {
     margin: auto;
-    font-size: 2.8em;
-    color: orange;
+    margin-left: 10px;
+    font-size: 1em;
+    color: white;
 }
 
 
@@ -53,23 +56,21 @@ nav li
 
 nav a
 {
-    font-size: 1.3em;
-    color: rgb(253, 197, 2);
+    font-size: 1em;
+    color: white;
     padding-bottom: 3px;
     text-decoration: none;
 }
 nav a:hover
 {
-    color: orange;
-    border-bottom: 3px solid orange;
+    color: #d6d4d2;
 }
-
 
 section 
 {
     display: flex;
     justify-content: left-start;
-    color: orange;
+    color: white;
 }
 
 
@@ -79,7 +80,6 @@ article
     margin-left: 100px;
     color: white;
     display: flex;
-    background: url(images/fiche2.jpg) no-repeat;
     width: 329px;
     height: 153px;
 }
@@ -92,7 +92,7 @@ section article table
 footer 
 {
     display: flex;
-    background: url(images/separateurfoo.jpg) repeat-x top;   
+    background-color: black;   
 }
 
 #yo 
@@ -100,16 +100,19 @@ footer
     display: flex;
     width: 900px;
     justify-content: center;
-    margin-top: 20px;
+    height: 50px;
 }
 
 footer h1 
 {
-    color : orange;
+    color : white;
+    margin-top: 10px;
 }
 
 footer ul
 {
+    margin-top: 10px;
+    color: white;
     display: flex;
     list-style-type: none;
 }
