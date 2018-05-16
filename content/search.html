@@ -7,54 +7,65 @@
     </head>
 
     <body>
-    	<div id="bloc_page">
-    		<header>
-    				<a href="home.html"><img src="images/logo.png" alt="Logo Organize it"></a>
-    			<div id="titre">
-    				<h1>Plan your event easily !</h1>
-    			<nav>
+        <div id="bloc_page">
+            <header>
+                <div id="log">
+                    <a href="home.html"><img src="images/logo-fond-noir.png" alt="Logo Organize it"></a>
+                    <h1>Plan your event easily !</h1>
+                </div>
+                <nav>
                     <ul>
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="profil.html">Profil</a></li>
+                        <li><a href="home.html">Be organizer</a></li>
+                        <li><a href="profil.html">Info</a></li>
                         <li><a href="login.html">Log in/Create a profil</a></li>
                     </ul>
                 </nav>
-            	</div>
-    		</header>
-    		<section>
-    			<article>
+            </header>
+            <section>
+                <article>
                     <h1>Search criteria :</h1>
-    				<form method="post" action="traitement.php">
+                    <form method="post" action="traitement.php">
                         <p>
+                            <label for="type">What kind of event ?</label> : <select name="type" id="type"> 
+                                    <option value="mariage">Mariage</option>
+                                    <option value="anniversaire">Birthday</option>
+                                    <option value="naissance">Birth</option>
+                                    <option value="baptème">Baptism</option>
+                                    <option value="goodnews">Good news</option>
+                                    <option value="marketing">Marketing event</option>
+                                    <option value="sport">Sport event</option>
+                                    <option value="musique">Music event</option>
+                                    <option value="autre">Other</option>
+                            </select>
+                            <br />
                             <label for="people">Number of people</label> : <input type="number" name="people" id="people" />
                             <br />
                             <label for="budget">Budget in €</label> : <input type="number" name="budget" id="budget" />
                             <br />
                             <label for="surface">Surface in m²</label> : <input type="number" name="surface" id="surface" />
-                            <br/>
+                            <br />
                             <label for="start">Start date</label> : <input type="date" name="start" id="start" />
                             <br />
                             <label for="end">End date</label> : <input type="date" name="end" id="end" />
                         </p>
                     </form>
                     <div id="bouton">
-                    <p>
                     <a href="result.html">Search !</a>
-                    </p>
                     </div>
-    			</article>
-    		</section>
-    		<footer>
-    			<div id="yo">
-    			<h1>Contact</h1>
-    			<ul>
-    				<li><p>02.452.63.25</p></li>
+                </article>
+            </section>
+            <footer>
+                <div id="yo">
+                <h1>Contact</h1>
+                <ul>
+                    <li><p>02.452.63.25</p></li>
                     <li><p>organizeit@hotmail.com</p></li>
-    				<li><a href="#"><img src="images/facebook.png" alt="facebook"></a></li>
-    				<li><a href="#"><img src="images/twitter.png" alt="twitter"></a></li>
-    			</ul>
-    			</div>
-    		</footer>
-    	</div>
+                    <li><a href="#"><img src="images/facebook.png" width="auto" height="30px" alt="facebook"></a></li>
+                    <li><a href="#"><img src="images/twitter.png" width="auto" height="30px" alt="twitter"></a></li>
+                    <li><a href="#"><img src="images/insta.png" width="auto" height="30px" alt="instagram"></a></li>
+                </ul>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>

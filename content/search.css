@@ -1,6 +1,5 @@
 body
 {
-    background: url('images/gris.png');
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
 }
@@ -13,29 +12,32 @@ body
 
 header
 {
-    background: url('images/separateuro.png') repeat-x bottom;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: black;
+}
+
+#log 
+{
+    display: flex;
+    justify-content: flex-start;
 }
 
 header img 
 {
-    width: 400px;
-    height: 400px;
-}
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
 
-#titre 
-{
-    display: flex;
-    flex-direction: column;
 }
 
 header h1 
 {
     margin: auto;
-    font-size: 2.8em;
-    color: orange;
+    margin-left: 10px;
+    font-size: 1em;
+    color: white;
 }
 
 
@@ -53,15 +55,14 @@ nav li
 
 nav a
 {
-    font-size: 1.3em;
-    color: rgb(253, 197, 2);
+    font-size: 1em;
+    color: white;
     padding-bottom: 3px;
     text-decoration: none;
 }
 nav a:hover
 {
-    color: orange;
-    border-bottom: 3px solid orange;
+    color: #d6d4d2;
 }
 
 
@@ -69,46 +70,61 @@ section
 {
     display: flex;
     justify-content: center;
-    color: orange;
+    color: white;
+    background: url(images/light.jpg);
+    background-size: 900px;
 }
 
-article label + input
+article
+{
+    background: rgb(0,0,0,0.5);
+    border-radius: 20px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+article label + input 
 {
     margin-bottom: 10px;
 }
 
-#bouton a
+article label + select
 {
-    display:block;
-    width:150px;
-    line-height:50px;
-    text-align:center;
-    vertical-align:middle;
-    background:url(images/bouton.png) no-repeat;
-    background-size: 150px 50px;
-    color: rgb(254, 107, 0);
-    text-decoration:none;
-    margin-left: 30px;
+    margin-bottom: 10px;
 }
 
-#bouton a:hover 
+#bouton 
 {
-    background:url(images/bouton3.png) no-repeat;
-    background-size: 150px 50px;
-    width: 150px;
-    line-height:50px;
-    text-align:center;
-    vertical-align:middle;
-    color: rgb(254, 107, 0);
-    text-decoration:none;
-    margin-left: 30px;
+    position: relative;
+    left: 55px;
+    margin-bottom: 20px;
+    background: rgb(255,255,255,0.9);
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+#bouton a
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 15px;
+    color: black;
+    text-decoration: none;
+}
+
+#bouton:hover 
+{
+    background-color: rgb(255,255,255,0.7);
+    text-decoration: none;   
 }
 
 
 footer 
 {
     display: flex;
-    background: url(images/separateurfoo.jpg) repeat-x top;   
+    background-color: black;   
 }
 
 #yo 
@@ -116,16 +132,19 @@ footer
     display: flex;
     width: 900px;
     justify-content: center;
-    margin-top: 20px;
+    height: 50px;
 }
 
 footer h1 
 {
-    color : orange;
+    color : white;
+    margin-top: 10px;
 }
 
 footer ul
 {
+    margin-top: 10px;
+    color: white;
     display: flex;
     list-style-type: none;
 }
