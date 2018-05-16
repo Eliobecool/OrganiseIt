@@ -2,6 +2,7 @@ body
 {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
+    background: black;
 }
 
 #bloc_page
@@ -136,8 +137,7 @@ section article h1
 
 section article p 
 {
-	color: black;
-	font-weight: bold;
+color: white;
 }
 
 

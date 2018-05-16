@@ -1,6 +1,6 @@
 body
 {
-    background: url('images/gris.png');
+    background: black;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
 }
@@ -68,7 +68,7 @@ nav a:hover
 
 section 
 {
-    color: black;
+    color: white;
 }
 
 #rock
@@ -126,11 +126,11 @@ article
     left: 60px;
     margin-bottom: 50px;
     margin-top: 50px;
-    background: black;
+    background: white;
     border-radius: 20px;
     width: 200px;
     height: 50px;
-    color: white;
+    color: black;
     font-size: 1em;
     box-sizing: content-box;
     border-width: 0px;
@@ -139,7 +139,7 @@ article
 
 #bouton1:hover
 {
-    background-color: #303030;
+    background-color: #ebe6e7;
     text-decoration: none;
 }
 
@@ -148,11 +148,11 @@ article
     position: relative;
     left: 30px;
     margin-top: 50px;
-    background: black;
+    background: white;
     border-radius: 20px;
     width: 200px;
     height: 50px;
-    color: white;
+    color: black;
     font-size: 1em;
     box-sizing: content-box;
     border-width: 0px;
@@ -160,7 +160,7 @@ article
 
 #bouton2:hover
 {
-    background-color: #303030;
+    background-color: #ebe6e7;
     text-decoration: none;
 }
 
