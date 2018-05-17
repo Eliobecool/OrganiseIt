@@ -19,13 +19,13 @@ header
     background-color: black;
 }
 
-#log 
+#log
 {
     display: flex;
     justify-content: flex-start;
 }
 
-header img 
+header img
 {
     width: auto;
     height: 50px;
@@ -33,7 +33,7 @@ header img
 
 }
 
-header h1 
+header h1
 {
     margin: auto;
     margin-left: 10px;
@@ -43,13 +43,13 @@ header h1
 
 
 /* Navigation */
-nav ul 
+nav ul
 {
     display: flex;
     list-style-type: none;
 }
 
-nav li 
+nav li
 {
     margin-right: 15px;
 }
@@ -66,7 +66,7 @@ nav a:hover
     color: #d6d4d2;
 }
 
-section 
+section
 {
     display: flex;
     justify-content: left-start;
@@ -74,9 +74,9 @@ section
 }
 
 
-article 
+article
 {
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-left: 100px;
     color: white;
     display: flex;
@@ -87,13 +87,13 @@ section article table
     margin-top: 10px;
 }
 
-footer 
+footer
 {
     display: flex;
-    background-color: black;   
+    background-color: black;
 }
 
-#yo 
+#yo
 {
     display: flex;
     width: 900px;
@@ -101,7 +101,7 @@ footer
     height: 50px;
 }
 
-footer h1 
+footer h1
 {
     color : white;
     margin-top: 10px;

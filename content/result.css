@@ -3,6 +3,8 @@ body
     background: black;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
+    background: url(images/logo16.jpg);
+    background-size: 100%;
 }
 
 #bloc_page
@@ -19,13 +21,13 @@ header
     background-color: black;
 }
 
-#log 
+#log
 {
     display: flex;
     justify-content: flex-start;
 }
 
-header img 
+header img
 {
     width: auto;
     height: 50px;
@@ -33,7 +35,7 @@ header img
 
 }
 
-header h1 
+header h1
 {
     margin: auto;
     margin-left: 10px;
@@ -43,13 +45,13 @@ header h1
 
 
 /* Navigation */
-nav ul 
+nav ul
 {
     display: flex;
     list-style-type: none;
 }
 
-nav li 
+nav li
 {
     margin-right: 15px;
 }
@@ -67,13 +69,11 @@ nav a:hover
     color: #d6d4d2;
 }
 
-section 
+section
 {
     display: flex;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    background: url(images/bois.jpg);
-    background-size: 900px 724px;
+
+
 }
 
 section article
@@ -83,7 +83,7 @@ section article
 
 }
 
-section article h1 
+section article h1
 {
     position: relative;
     left: 50px;
@@ -107,7 +107,7 @@ section article h1
 }
 
 #best img
-{   
+{
     order: 1;
     width: 300px;
     height: 300px;
@@ -138,7 +138,7 @@ section article h1
     justify-content: center;
 }
 
-.second table 
+.second table
 {
     order: 2;
     border: 2px solid black;
@@ -166,13 +166,13 @@ section article h1
     margin-bottom: 30px;
 }
 
-footer 
+footer
 {
     display: flex;
-    background-color: black;   
+    background-color: black;
 }
 
-#yo 
+#yo
 {
     display: flex;
     width: 900px;
@@ -180,7 +180,7 @@ footer
     height: 50px;
 }
 
-footer h1 
+footer h1
 {
     color : white;
     margin-top: 10px;
