@@ -39,7 +39,8 @@ header img
 header h1
 {
     margin: auto;
-    margin-left: 10px;
+    position: relative;
+    right:14px;
     font-size: 1em;
     color: white;
 }
