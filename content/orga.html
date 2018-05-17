@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="login.css" />
+        <title>Organize it !</title>
+    </head>
+
+    <body>
+    	<div id="bloc_page">
+    		<header>
+                <div id="log">
+                    <a href="home.html"><img src="images/logo.gif" alt="Logo Organize it"></a>
+                    <h1>Organize it</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="orga.html">Your agency</a></li>
+                        <li><a href="home.html#info">Info</a></li>
+                        <li><a href="login.html">Log in/Create a profil</a></li>
+                    </ul>
+                </nav>
+            </header>
+    		<section>
+                <div id="rock">
+                </div>
+                <article>
+                <div id="create">
+                    <div id="ezi" ">
+                    <h1>Creation of your agency :</h1>
+    				<form method="get" action="createaccount">
+                        <p>
+
+                            <label for="agency">Agency name</label> : <input type="text" name="agency" id="agency" />
+                            <br/>
+                            <label for="password">Password</label> : <input type="password" name="password" id="password" />
+                            <br/>
+                            <label for="password"> Type Password Again</label> : <input type="password" name="password" id="password" />
+                            <br/>
+                            <label for="email">Email</label> : <input type="email" name="email" id="email" />
+                            <br/>
+                            <label for="phone">Phone number</label> : <input type="tel" name="phone" id="phone" />
+                            <br/>
+                            What kind(s) of event do you organize ?
+                            <br/>
+                            <input type="checkbox" name="mariage" id="mariage" /> <label for="mariage">Wedding</label><br />
+                            <input type="checkbox" name="anniversaire" id="anniversaire" /> <label for="anniversaire">Birthday</label><br />
+                            <input type="checkbox" name="naissance" id="naissance" /> <label for="naissance">Birth</label><br />
+                            <input type="checkbox" name="bapteme" id="bapteme" /> <label for="bapteme">Baptism</label><br />
+                            <input type="checkbox" name="goodnews" id="goodnews" /> <label for="goodnews">Goodnews</label><br />
+                            <input type="checkbox" name="marketing" id="marketing" /> <label for="marketing">Marketing event</label><br />
+                            <input type="checkbox" name="sport" id="sport" /> <label for="sport">Sport event</label><br />
+                            <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
+                            <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
+                            <br/>
+                            <label for="budget">Budget maximum in €</label> : <input type="number" name="budget" id="budget" /> <br/>
+                            <label for="people">Maximum of people you can manage</label> : <input type="number" name="people" id="people" />
+                        </p>
+                        <input id="bouton1" type="submit" value="Create your profile !">
+                    </form>	 
+                    </div>
+                </div>
+                
+
+                <div id="login">
+                    <div id="ez">
+                     <h1>Log in as agency :</h1>
+                    <form method="get" action="login">
+                        <p>
+                            <label for="username">Username</label> : <input type="text" name="username" id="username" />
+                            <br/>
+                            <label for="password">Password</label> : <input type="password" name="password" id="password" />
+                        </p>
+                        <input id="bouton2" type="submit" value="Log in !">
+                    </form>
+                    </div>
+                </div>
+                </article>
+    		</section>
+    		<footer>
+                <div id="yo">
+                <h1>Contact</h1>
+                <ul>
+                    <li><p>02.452.63.25</p></li>
+                    <li><p>organizeit@hotmail.com</p></li>
+                    <li><a href="#"><img src="images/facebook.png" width="auto" height="30px" alt="facebook"></a></li>
+                    <li><a href="#"><img src="images/twitter.png" width="auto" height="30px" alt="twitter"></a></li>
+                    <li><a href="#"><img src="images/insta.png" width="auto" height="30px" alt="instagram"></a></li>
+                </ul>
+                </div>
+            </footer>
+    	</div>
+    </body>
+</html>
