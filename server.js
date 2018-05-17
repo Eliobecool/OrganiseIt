@@ -8,6 +8,7 @@ var app = express ();
 var http = require('http');
 var fs = require('fs');
 var consolidate = require('consolidate');
+var currentLogin = "";
 
 /*-------------------------------------------------------*/
 /*--------------------------HOGAN-----------------------*/
@@ -39,11 +40,11 @@ MongoClient.connect(url, function(err, db) {
     if (delOK) console.log("Collections Users dropped");
     });
 
-  dbo.collection("agencies").drop(function(err, delOK) {
-    if (err) 
-     console.log("No Collection with agencies was found");
-    if (delOK) console.log("Collections Agencies dropped");
-    });
+  // dbo.collection("agencies").drop(function(err, delOK) {
+  //   if (err) 
+  //    console.log("No Collection with agencies was found");
+  //   if (delOK) console.log("Collections Agencies dropped");
+  //   });
 
     /*--------------------CREATING NEW COLLECTIONS--------------------*/
 
@@ -57,7 +58,7 @@ MongoClient.connect(url, function(err, db) {
 
     //console.log(administrator);
     //console.log(administrator.username);
-    addUser(administrator);
+    // addUser(administrator);
     // addAgencies(agencies1);
     
 
@@ -82,41 +83,55 @@ MongoClient.connect(url, function(err, db) {
 /*------------------CREATE ACCOUNT LISTENER---------------------*/
 app.get('/createaccount', function(req,res,next) {
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("organizeitdb");
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("organizeitdb");
+        var newUser = {username : req.query.username, type: "client", name: req.query.name, surname: req.query.surname, adress: req.query.adress, email: req.query.email, gender: req.query.gender, password: req.query.password};
+        var searchQuery = {username : req.query.username};
+        console.log(req.query.username);
+        /*
+         * INSERT A NEW USER INTO THE DATABASE
+         * NO CHECK FOR EXISTING USER YET
+         */
+        dbo.collection("users").insert(newUser, function(err, res) 
+        {
+            if (err) throw err;
+            console.log("Number of users inserted: " + res.insertedCount);
+        });
 
-    var newUser = {username : req.query.username, type: "client", name: req.query.name, surname: req.query.surname, adress: req.query.adress, email: req.query.email, gender: req.query.gender, password: req.query.password};
+        dbo.collection("users").find({searchQuery}).toArray(function(err, result) 
+        {
+            console.log(result[0].username);
+            res.render('profile.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
+            dbo.close(); 
+        });
 
-    dbo.collection("users").insert(newUser, function(err, res) {
-     if (err) throw err;
-     console.log("Number of users inserted: " + res.insertedCount);
- });
-
-    dbo.collection("users").findOne({}, function(err, doc) {
-        res.render('profile.html', {username : doc.username, type: doc.type, name: doc.name, surname: doc.surname, adress: doc.adress, email: doc.email, gender: doc.ender, password: doc.password});
-        dbo.close(); 
     });
-
-});
 });
 
 /*------------------LOGIN ACCOUNT LISTENER---------------------*/
 app.get('/login', function(req,res,next) {
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("organizeitdb");
-    var query = { username: req.query.username };
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("organizeitdb");
+        var query = { username: req.query.username };
+        console.log(req.query.username);
+        dbo.collection("users").find(query).toArray(function(err, result)
+        {
+            if (err) throw err;
+            if (results.length>0 && results[0].password ==  req.query.password)
+            {
+                res.render('profile.html', {username : results[0].username, type: results[0].type, name: results[0].name, surname: results[0].surname, adress: results[0].adress, email: results[0].email, gender: results[0].ender, password: results[0].password});
+            } 
+            // else {
+            //     if (err) res.render('login.html', {errorMessageLogin = "The user neither exists or the password is incorrect. Please try again."});
+            // }
 
-    dbo.collection("users").find(query).toArray(function(err, results)
-    {
-      if (results.length>0)
-        res.render('profile.html', {username : results[0].username, type: results[0].type, name: results[0].name, surname: results[0].surname, adress: results[0].adress, email: results[0].email, gender: results[0].ender, password: results[0].password});
-    dbo.close(); 
-});
+            dbo.close();
+        });
 
-});
+    });
 });
 /*-------------------------------------------------------*/
 /*------------------ALL FUNCTIONS---------------------*/
@@ -124,47 +139,60 @@ app.get('/login', function(req,res,next) {
     
 
         /*------------------USERS RELATED---------------------*/
-        function userExist(inputUsername)
-        {
-        	MongoClient.connect(url, function(err, db) {
-                if (err) throw err;
-                var dbo = db.db("organizeitdb");
-                // var query = { username: inputUsername.username };
+        // var doesUserExists = undefined;
+
+        // function addUser(insertingUser)
+        // {
+        //     MongoClient.connect(url, function(err, db) {
+        //         if (err) throw err;
+        //         var dbo = db.db("organizeitdb");
+
+        //         // console.log("addUser Boolean Test:");
+        //         // console.log(insertingUser.username);
+        //         //var doesUserExists = userExist(insertingUser.username); //!!!!!!!!!!!!!!!!!!!
+        //         //console.log(doesUserExists);
+
+        //         //console.log(doesUserExists);
+
+        //         if(userExist(insertingUser.username)) console.log(".");
+        //         if(!userExist(insertingUser.username))
+        //             dbo.collection("users").insertOne(insertingUser, function(err, res) {
+        //             if (err) throw err;
+        //             console.log("Number of users inserted: " + res.insertedCount);
+        //             db.close();
+        //         });           
+        // });
+        // }
+
+        // function userExist(inputUsername)
+        // {
+        // 	MongoClient.connect(url, function(err, db) {
+        //         if (err) throw err;
+        //         var dbo = db.db("organizeitdb");
+        //         // var query = { username: inputUsername.username };
                 
-                console.log("userExist Input Test:");
-                console.log(inputUsername);
-                dbo.collection("users").find({username : "admin"}).toArray(function(err, results)
-                {
-                     console.log(results);
-                    if (err) throw err;
-                    if (results.length0)
-                        dbo.close();
-                        return true;
-                    if (results.length<1)
-                        dbo.close();
-                        return false;
-                });
-            });
-        }
+        //         // console.log("userExist Input Test:");
+        //         // console.log(inputUsername);
+        //         dbo.collection("users").find({username : inputUsername}).toArray(function(err, results)
+        //         {
+                    
+        //             if (err) throw err;
+        //             // if (results.length!=0)
+        //             //     dbo.close();
+        //             //     return results.length!=0;
+        //             // if (results.length==0)
+        //             //     dbo.close();
+        //             //     return false;
+        //             console.log("doesUserExists Bolean Test");
+                    
+        //             doesUserExists = results.length!=0;
+        //             console.log(doesUserExists);
+        //             return results.length!=0;
+        //         });
+        //     });
+        // }
 
-        function addUser(insertingUser)
-        {
-            MongoClient.connect(url, function(err, db) {
-                if (err) throw err;
-                var dbo = db.db("organizeitdb");
-
-                console.log("addUser Input Test:");
-                console.log(insertingUser.username);
-
-                if(userExist(insertingUser.username)==true) console.log(".");
-                if(userExist(insertingUser.username)==false)
-                    dbo.collection("users").insertOne(insertingUser, function(err, res) {
-                    if (err) throw err;
-                    console.log("Number of users inserted: " + res.insertedCount);
-                    db.close();
-                });           
-        });
-        }
+        
 
         /*------------------AGENCIES RELATED---------------------*/
      //    function angencyExist(inputAgency)
