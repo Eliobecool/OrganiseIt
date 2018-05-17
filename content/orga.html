@@ -15,7 +15,7 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="orga.html">Be organizer</a></li>
+                        <li><a href="orga.html">Your agency</a></li>
                         <li><a href="home.html#info">Info</a></li>
                         <li><a href="login.html">Log in/Create a profil</a></li>
                     </ul>
@@ -27,7 +27,7 @@
                 <article>
                 <div id="create">
                     <div id="ezi" ">
-                    <h1>Creation of your profile :</h1>
+                    <h1>Creation of your agency :</h1>
     				<form method="get" action="createaccount">
                         <p>
 
@@ -41,7 +41,20 @@
                             <br/>
                             <label for="phone">Phone number</label> : <input type="tel" name="phone" id="phone" />
                             <br/>
-                            <label for="type">Phone number</label> : <input type="tel" name="phone" id="phone" />
+                            What kind(s) of event do you organize ?
+                            <br/>
+                            <input type="checkbox" name="mariage" id="mariage" /> <label for="mariage">Wedding</label><br />
+                            <input type="checkbox" name="anniversaire" id="anniversaire" /> <label for="anniversaire">Birthday</label><br />
+                            <input type="checkbox" name="naissance" id="naissance" /> <label for="naissance">Birth</label><br />
+                            <input type="checkbox" name="bapteme" id="bapteme" /> <label for="bapteme">Baptism</label><br />
+                            <input type="checkbox" name="goodnews" id="goodnews" /> <label for="goodnews">Goodnews</label><br />
+                            <input type="checkbox" name="marketing" id="marketing" /> <label for="marketing">Marketing event</label><br />
+                            <input type="checkbox" name="sport" id="sport" /> <label for="sport">Sport event</label><br />
+                            <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
+                            <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
+                            <br/>
+                            <label for="budget">Budget maximum in €</label> : <input type="number" name="budget" id="budget" /> <br/>
+                            <label for="people">Maximum of people you can manage</label> : <input type="number" name="people" id="people" />
                         </p>
                         <input id="bouton1" type="submit" value="Create your profile !">
                     </form>	 
@@ -51,7 +64,7 @@
 
                 <div id="login">
                     <div id="ez">
-                     <h1>Log in :</h1>
+                     <h1>Log in as agency :</h1>
                     <form method="get" action="login">
                         <p>
                             <label for="username">Username</label> : <input type="text" name="username" id="username" />
