@@ -41,7 +41,13 @@ header h1
     font-size: 1em;
     color: white;
 }
-
+#aboutus
+{
+  position:relative;
+  color:white;
+  top: 500px;
+  font-size:2em;
+}
 
 /* Navigation */
 nav ul
@@ -61,6 +67,7 @@ nav a
     color: white;
     padding-bottom: 3px;
     text-decoration: none;
+
 }
 nav a:hover
 {
@@ -82,7 +89,7 @@ nav a:hover
 	display: flex;
 	justify-content: center;
 	position: relative;
-	top: 300px;
+	top: 350px;
 	left: 500px;
 	color: white;
     font-size: 4em;
