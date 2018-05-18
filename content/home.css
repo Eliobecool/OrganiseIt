@@ -45,8 +45,9 @@ header h1
 {
   position:relative;
   color:white;
-  top: 500px;
+  top: 600px;
   font-size:2em;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Navigation */
@@ -54,11 +55,15 @@ nav ul
 {
     display: flex;
     list-style-type: none;
+      font-family: 'Roboto', sans-serif;
+
 }
 
 nav li
 {
     margin-right: 15px;
+      font-family: 'Roboto', sans-serif;
+
 }
 
 nav a
@@ -67,6 +72,8 @@ nav a
     color: white;
     padding-bottom: 3px;
     text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+
 
 }
 nav a:hover
@@ -89,13 +96,15 @@ nav a:hover
 	display: flex;
 	justify-content: center;
 	position: relative;
-	top: 350px;
+	top: 100px;
 	left: 500px;
 	color: white;
-    font-size: 4em;
+    font-size: 3em;
     width: 400px;
     border: 6px solid white;
     z-index: 2;
+font-family: 'Tajawal', sans-serif;
+
 }
 
 #start a
@@ -108,21 +117,10 @@ nav a:hover
 {
 	color: #d6d4d2;
 	text-decoration: none;
+
 }
 
-#opac
-{
-	display: flex;
-	justify-content: center;
-	position: relative;
-	top: 220px;
-	left: 506px;
-    width: 400px;
-    height: 74px;
-    background-color: black;
-    opacity: 0.50;
-    z-index: 1;
-}
+
 
 section article
 {
