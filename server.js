@@ -111,6 +111,38 @@ app.get('/createaccount', function(req,res,next) {
 
     });
 });
+/*------------------AGENCY ACCOUNT LISTENER---------------------*/
+
+app.get('/createagency', function(req,res,next) {
+
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("organizeitdb");
+        var newAgency = {username : req.query.username, type: "client", name: req.query.name, surname: req.query.surname, adress: req.query.adress, email: req.query.email, gender: req.query.gender, password: req.query.password};
+        // var searchQuery = {username : req.query.username};
+        // console.log(req.query.username);
+
+        /*
+         * INSERT A NEW USER INTO THE DATABASE
+         * NO CHECK FOR EXISTING USER YET
+         */
+        dbo.collection("users").insert(newUser, function(err, res) 
+        {
+            if (err) throw err;
+            console.log("Number of users inserted: " + res.insertedCount);
+        });
+
+        dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
+        {
+            console.log(result[0].username);
+
+
+            res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
+            dbo.close(); 
+        });
+
+    });
+});
 
 /*------------------LOGIN ACCOUNT LISTENER---------------------*/
 app.get('/login', function(req,res,next) {
