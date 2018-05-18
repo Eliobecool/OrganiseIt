@@ -15,7 +15,7 @@ var currentLogin = "";
 /*-------------------------------------------------------*/
 
 app.engine ('html', consolidate.hogan);
-app.set('views', 'private');
+app.set('views', 'content');
 
 /*-------------------------------------------------------*/
 /*---------------------MONGOCLIENT-----------------------*/
@@ -35,10 +35,10 @@ MongoClient.connect(url, function(err, db) {
 
   /*----------------DROP OLD COLLECTIONS-------------------*/
 
-  dbo.collection("users").drop(function(err, delOK) {
-    if (err) console.log("No Collection with users was found");
-    if (delOK) console.log("Collections Users dropped");
-    });
+  // dbo.collection("users").drop(function(err, delOK) {
+  //   if (err) console.log("No Collection with users was found");
+  //   if (delOK) console.log("Collections Users dropped");
+  //   });
 
   // dbo.collection("agencies").drop(function(err, delOK) {
   //   if (err) 
@@ -48,7 +48,7 @@ MongoClient.connect(url, function(err, db) {
 
     /*--------------------CREATING NEW COLLECTIONS--------------------*/
 
-    var administrator = {username : "admin", type: "admin", name: "name", surname: "surname", adress: "Rue de la ferme blanche 10", email: "contact@organizeit.be", gender: "male", password: "admin"};
+    var  administrator = {username : "admin", type: "admin", name: "name", surname: "surname", adress: "Rue de la ferme blanche 10", email: "contact@organizeit.be", gender: "male", password: "admin"};
     var agencies1 = 
     [
     { name : "organize it", adress: "Rue de la ferme blanche, 10. 1490 Court-St-Etienne", email: "contact@organizeit.be", website: "www.organizeit.be", vatnumber: "BE1234567890", phone: "+32477633634"},
@@ -87,8 +87,9 @@ app.get('/createaccount', function(req,res,next) {
         if (err) throw err;
         var dbo = db.db("organizeitdb");
         var newUser = {username : req.query.username, type: "client", name: req.query.name, surname: req.query.surname, adress: req.query.adress, email: req.query.email, gender: req.query.gender, password: req.query.password};
-        var searchQuery = {username : req.query.username};
-        console.log(req.query.username);
+        // var searchQuery = {username : req.query.username};
+        // console.log(req.query.username);
+
         /*
          * INSERT A NEW USER INTO THE DATABASE
          * NO CHECK FOR EXISTING USER YET
@@ -99,10 +100,12 @@ app.get('/createaccount', function(req,res,next) {
             console.log("Number of users inserted: " + res.insertedCount);
         });
 
-        dbo.collection("users").find({searchQuery}).toArray(function(err, result) 
+        dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
         {
             console.log(result[0].username);
-            res.render('profile.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
+
+
+            res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
             dbo.close(); 
         });
 
@@ -115,18 +118,20 @@ app.get('/login', function(req,res,next) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("organizeitdb");
-        var query = { username: req.query.username };
-        console.log(req.query.username);
-        dbo.collection("users").find(query).toArray(function(err, result)
+        // var query = { username: req.query.username };
+        // console.log(req.query.username);
+
+        dbo.collection("users").find({username: req.query.username}).toArray(function(err, result)
         {
             if (err) throw err;
-            if (results.length>0 && results[0].password ==  req.query.password)
+            if (result.length>0 && result[0].password ==  req.query.password)
             {
-                res.render('profile.html', {username : results[0].username, type: results[0].type, name: results[0].name, surname: results[0].surname, adress: results[0].adress, email: results[0].email, gender: results[0].ender, password: results[0].password});
+                res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].gender, password: result[0].password});
             } 
-            // else {
-            //     if (err) res.render('login.html', {errorMessageLogin = "The user neither exists or the password is incorrect. Please try again."});
-            // }
+            else {
+                // login.html.getElementById("errorLogin").style.display="block";
+                res.render('login.html', {errorMessageLogin : "The user neither exists or the password is incorrect. Please try again.", block : "block"});
+            }
 
             dbo.close();
         });
