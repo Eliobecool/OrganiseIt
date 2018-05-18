@@ -115,14 +115,14 @@ footer
 
 footer h1
 {
-    color : white;
+    color : black;
     margin-top: 10px;
 }
 
 footer ul
 {
     margin-top: 10px;
-    color: white;
+    color: black;
     display: flex;
     list-style-type: none;
 }
