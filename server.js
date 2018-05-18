@@ -127,16 +127,23 @@ app.get('/login', function(req,res,next) {
             if (result.length>0 && result[0].password ==  req.query.password)
             {
                 res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].gender, password: result[0].password});
+                currentLogin = result[0].username;
+                // document.getElementById('currentUsername').value = currentLogin;
             } 
             else {
                 // login.html.getElementById("errorLogin").style.display="block";
-                res.render('login.html', {errorMessageLogin : "The user neither exists or the password is incorrect. Please try again.", block : "block"});
+                res.render('loginerror.html', {errorMessageLogin : "The user neither exists or the password is incorrect. Please try again.", block : "block"});
             }
 
             dbo.close();
         });
 
     });
+});
+
+app.get('/connected', function(req,res,next) {
+
+    res.render('homeco.html',{currentUsername : currentLogin});
 });
 /*-------------------------------------------------------*/
 /*------------------ALL FUNCTIONS---------------------*/
