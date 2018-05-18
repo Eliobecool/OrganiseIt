@@ -3,7 +3,7 @@ body
     background: black;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
-    background: url(images/logo18.jpg);
+    background: url(images/logo20.jpg);
     background-size: 100%;
 }
 
@@ -34,7 +34,10 @@ header img
     margin-left: 20px;
 
 }
-
+#opac2 {
+  color:black;
+  font-size:2em;
+}
 header h1
 {
     margin: auto;
