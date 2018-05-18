@@ -29,14 +29,16 @@
                 <div id="create">
                     <div id="ezi" ">
                     <h1>Creation of your agency :</h1>
-    				<form method="get" action="createaccount">
+    				<form method="get" action="createagency">
                         <p>
 
                             <label for="agency">Agency name</label> : <input type="text" name="agency" id="agency" />
                             <br/>
+                            <label for="agencyusername">Agency profile username</label> : <input type="text" name="agencyusername" id="agencyusername" />
+                            <br/>
                             <label for="password">Password</label> : <input type="password" name="password" id="password" />
                             <br/>
-                            <label for="password"> Type Password Again</label> : <input type="password" name="password" id="password" />
+                            <label for="confirmPassword"> Type Password Again</label> : <input type="confirmPassword" name="confirmPassword" id="confirmPassword" />
                             <br/>
                             <label for="email">Email</label> : <input type="email" name="email" id="email" />
                             <br/>
@@ -54,10 +56,10 @@
                             <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
                             <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
                             <br/>
-                            <label for="budget">Budget maximum in €</label> : <input type="number" name="budget" id="budget" /> <br/>
-                            <label for="people">Maximum of people you can manage</label> : <input type="number" name="people" id="people" />
+                            <div style="color:white" ><label for="budget">Maximum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget"/> <br/></div>
+                            <div style="color:white"><label for="telephonenumber">Maximum of people you can manage</label> : <input type="number" name="telephonenumber" id="people" /></div>
                         </p>
-                        <input id="bouton1" type="submit" value="Create your profile !">
+                        <input id="bouton1" type="submit" value="Submit your agency !">
                     </form>
                     </div>
                 </div>
@@ -83,7 +85,7 @@
                 <h1>Contact</h1>
                 <ul>
                     <li><p>02.452.63.25</p></li>
-                    <li><p>organizeit@hotmail.com</p></li>
+                    <li><p>contact@organizeit.be</p></li>
                     <li><a href="#"><img src="images/facebook.png" width="auto" height="30px" alt="facebook"></a></li>
                     <li><a href="#"><img src="images/twitter.png" width="auto" height="30px" alt="twitter"></a></li>
                     <li><a href="#"><img src="images/insta.png" width="auto" height="30px" alt="instagram"></a></li>

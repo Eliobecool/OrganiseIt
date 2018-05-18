@@ -8,7 +8,22 @@ var app = express ();
 var http = require('http');
 var fs = require('fs');
 var consolidate = require('consolidate');
+
+/*
+* THESE VAR WILL BE UPDATED THROUGH ALL THE LOGIN/CREATION PROCESSES
+*/
 var currentLogin = "";
+var errorCreate = "";
+var errorCreate2 = "";
+var errorConnect = "";
+var currentUserProfile = {username : "", 
+    type: "",
+    name: "", 
+    surname: "", 
+    adress: "", 
+    email: "", 
+    gender: "", 
+    password: ""};
 
 /*-------------------------------------------------------*/
 /*--------------------------HOGAN-----------------------*/
@@ -16,6 +31,19 @@ var currentLogin = "";
 
 app.engine ('html', consolidate.hogan);
 app.set('views', 'content');
+
+app.get('/login.html', function(req,res,next) {
+    res.render('login.html',{currentUsername : currentLogin});
+});
+app.get('/home.html', function(req,res,next) {
+    res.render('home.html',{currentUsername : currentLogin});
+});
+app.get('/profil.html', function(req,res,next) {
+    res.render('profil.html',{username : currentUserProfile.username, type: currentUserProfile.type, name: currentUserProfile.name, surname: currentUserProfile.surname, adress: currentUserProfile.adress, email: currentUserProfile.email, gender: currentUserProfile.gender, password: currentUserProfile.password, currentUsername : currentLogin});
+});
+app.get('/aboutus.html', function(req,res,next) {
+    res.render('aboutus.html',{currentUsername : currentLogin});
+});
 
 /*-------------------------------------------------------*/
 /*---------------------MONGOCLIENT-----------------------*/
@@ -83,6 +111,7 @@ MongoClient.connect(url, function(err, db) {
 /*------------------CREATE ACCOUNT LISTENER---------------------*/
 app.get('/createaccount', function(req,res,next) {
 
+    
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("organizeitdb");
@@ -92,57 +121,96 @@ app.get('/createaccount', function(req,res,next) {
 
         /*
          * INSERT A NEW USER INTO THE DATABASE
-         * NO CHECK FOR EXISTING USER YET
+         * FIRST CHECK IF THE USER ALREADY EXISTS
          */
-        dbo.collection("users").insert(newUser, function(err, res) 
-        {
-            if (err) throw err;
-            console.log("Number of users inserted: " + res.insertedCount);
-        });
-
         dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
         {
-            console.log(result[0].username);
+            /*
+            * IF THE USER ALREADY EXISTS, THEN OUTPUTS AN ERROR MESSAGE
+            */
+            if (result.length>0)
+            {
+                errorCreate = "The this username already exists. Please find another username!"
+                res.render('login.html', {errorMessageCreate : errorCreate });
+            } 
+            /*
+            * IF THE PASSWORDS DO NOT MATCH, THEN OUTPUTS AN ERROR MESSAGE
+            */
+            else if (req.query.confirmPassword!=req.query.password)
+            {
+                errorCreate2 = "The passwords do not match!";
+                res.render('logincreateerror2.html', {errorMessageCreate2 : errorCreate2 });
+            } 
+            /*
+            * IF EVERYTHING MATCH
+            */
+            else if (result.length<1 && req.query.confirmPassword==req.query.password)
+            {
+                errorCreate = "";
+                errorCreate2 = "";
+                dbo.collection("users").insert(newUser, function(err, res) 
+                {
+                    if (err) throw err;
+                    // console.log("Number of users inserted: " + res.insertedCount);
+                });
+                dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
+                {
+                    res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
+                    dbo.close(); 
+                });
 
-
-            res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
-            dbo.close(); 
+            }    
         });
-
     });
 });
 /*------------------AGENCY ACCOUNT LISTENER---------------------*/
 
-app.get('/createagency', function(req,res,next) {
+// app.get('/createagency', function(req,res,next) {
 
-    MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("organizeitdb");
-        var newAgency = {username : req.query.username, type: "client", name: req.query.name, surname: req.query.surname, adress: req.query.adress, email: req.query.email, gender: req.query.gender, password: req.query.password};
-        // var searchQuery = {username : req.query.username};
-        // console.log(req.query.username);
+//     MongoClient.connect(url, function(err, db) {
+//         if (err) throw err;
+//         var dbo = db.db("organizeitdb");
+//         var newUser = {username : req.query.username, type: "client", name: req.query.name, surname: req.query.surname, adress: req.query.adress, email: req.query.email, gender: req.query.gender, password: req.query.password};
+//         // var searchQuery = {username : req.query.username};
+//         // console.log(req.query.username);
 
-        /*
-         * INSERT A NEW USER INTO THE DATABASE
-         * NO CHECK FOR EXISTING USER YET
-         */
-        dbo.collection("users").insert(newUser, function(err, res) 
-        {
-            if (err) throw err;
-            console.log("Number of users inserted: " + res.insertedCount);
-        });
+//         /*
+//          * INSERT A NEW USER INTO THE DATABASE
+//          * FIRST CHECK IF THE USER ALREADY EXISTS
+//          */
+//         dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
+//         {
+//             /*
+//             * IF THE USER ALREADY EXISTS, THEN OUTPUTS AN ERROR MESSAGE
+//             */
+//             if (result.length>0)
+//             {
+//                 res.render('createaccounterror.html', {errorMessageCreate : "The this username already exists. Please find another username!"});
+//             } 
+            
+//             * IF THE PASSWORDS DO NOT MATCH, THEN OUTPUTS AN ERROR MESSAGE
+            
+//             else if (req.query.confirmPassword!=req.query.password)
+//             {
+//                 res.render('createaccounterror2.html', {errorMessageCreate2 : "The passwords do not match!"});
+//             } 
+//             else if (result.length<1 && req.query.confirmPassword==req.query.password)
+//             {
+//                 dbo.collection("users").insert(newUser, function(err, res) 
+//                 {
+//                     if (err) throw err;
+//                     console.log("Number of users inserted: " + res.insertedCount);
+//                 });
+//                 dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
+//                 {
+//                     res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
+//                     dbo.close(); 
+//                 });
 
-        dbo.collection("users").find({username : req.query.username}).toArray(function(err, result) 
-        {
-            console.log(result[0].username);
-
-
-            res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
-            dbo.close(); 
-        });
-
-    });
-});
+//             }    
+//         });
+//     });
+// });
 
 /*------------------LOGIN ACCOUNT LISTENER---------------------*/
 app.get('/login', function(req,res,next) {
@@ -153,18 +221,34 @@ app.get('/login', function(req,res,next) {
         // var query = { username: req.query.username };
         // console.log(req.query.username);
 
-        dbo.collection("users").find({username: req.query.username}).toArray(function(err, result)
+        dbo.collection("users").findOne({username: req.query.username}, function(err, doc)
         {
             if (err) throw err;
-            if (result.length>0 && result[0].password ==  req.query.password)
+            if (doc!=null && doc.password ==  req.query.password)
             {
-                res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].gender, password: result[0].password});
-                currentLogin = result[0].username;
+                currentLogin = doc.username;
+                errorConnect = "";
+
+                currentUserProfile.username = doc.username;
+                currentUserProfile.type = doc.type;            
+                currentUserProfile.name = doc.name; 
+                currentUserProfile.surname = doc.surname;  
+                currentUserProfile.adress = doc.adress;  
+                currentUserProfile.email = doc.email;  
+                currentUserProfile.gender = doc.gender;  
+                currentUserProfile.password = doc.password;
+
+                res.render('profil.html', {username : doc.username, type: doc.type, name: doc.name, surname: doc.surname, adress: doc.adress, email: doc.email, gender: doc.gender, password: doc.password, currentUsername : currentLogin});
+                
+                
+
+                
                 // document.getElementById('currentUsername').value = currentLogin;
             } 
-            else {
-                // login.html.getElementById("errorLogin").style.display="block";
-                res.render('loginerror.html', {errorMessageLogin : "The user neither exists or the password is incorrect. Please try again.", block : "block"});
+            else if (doc.name!=req.query.username || doc.password !=  req.query.password)
+            {
+                errorConnect = "The user neither exists or the password is incorrect. Please try again.";
+                res.render('login.html', {errorMessageLogin : errorConnect});
             }
 
             dbo.close();
@@ -173,10 +257,20 @@ app.get('/login', function(req,res,next) {
     });
 });
 
-app.get('/connected', function(req,res,next) {
+// app.get('/connected', function(req,res,next) {
 
-    res.render('homeco.html',{currentUsername : currentLogin});
-});
+//     res.render('homeco.html',{currentUsername : currentLogin});
+// });
+// app.get('/homeco.html', function(req,res,next) {
+
+//     res.render('homeco.html',{currentUsername : currentLogin});
+// });
+// app.get('/aboutus.html', function(req,res,next) {
+
+//     res.render('/aboutus.html',{currentUsername : currentLogin});
+// });
+
+
 /*-------------------------------------------------------*/
 /*------------------ALL FUNCTIONS---------------------*/
 /*-------------------------------------------------------*/
@@ -326,7 +420,7 @@ app.get('/connected', function(req,res,next) {
      app.use(express.static('content'));
 
      app.use(function (req, res, next) {
-      res.status(404).send("<h1>404 Page Not Found !</h1> <br> <hr> <h3><a href='home.html'>Clic here to go back to homepage</a></h3>")
+      res.status(404).send("<h1>404 Page Not Found !</h1> <br> <hr> <h3><a href='First.html'>Clic here to go back to homepage</a></h3>")
   });
 
      app.listen(8080);
