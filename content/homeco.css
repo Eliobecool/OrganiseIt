@@ -1,0 +1,184 @@
+body
+{
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+    background: black;
+}
+
+#bloc_page
+{
+
+
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+      font-family: 'Roboto', sans-serif;
+
+}
+
+#log
+{
+  display: flex;
+  justify-content: flex-start;
+}
+
+header img
+{
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+
+}
+
+header h1
+{
+    margin: auto;
+    position: relative;
+    right:14px;
+    font-size: 1em;
+    color: white;
+}
+#aboutus
+{
+  position:relative;
+  color:white;
+  top: 600px;
+  font-size:2em;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Navigation */
+nav ul
+{
+    display: flex;
+    list-style-type: none;
+      font-family: 'Roboto', sans-serif;
+
+}
+
+nav li
+{
+    margin-right: 15px;
+      font-family: 'Roboto', sans-serif;
+
+}
+
+nav a
+{
+    font-size: 1em;
+    color: white;
+    padding-bottom: 3px;
+    text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+
+
+}
+nav a:hover
+{
+    color: #d6d4d2;
+}
+
+#banner
+{
+  margin-top: 10px;
+  background: url("images/logo5.jpg");
+  background-size: 1500px 800px;
+  width: 100%;
+  height: 800px;
+
+}
+
+#start
+{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 100px;
+  left: 500px;
+  color: white;
+    font-size: 3em;
+    width: 400px;
+    border: 6px solid white;
+    z-index: 2;
+font-family: 'Tajawal', sans-serif;
+
+}
+
+#start a
+{
+  color: white;
+  text-decoration: none;
+}
+
+#start a:hover
+{
+  color: #d6d4d2;
+  text-decoration: none;
+
+}
+
+
+
+section article
+{
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+section article h1,p
+{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+section article h1
+{
+  background : black;
+  color: white;
+}
+
+section article p
+{
+color: white;
+}
+
+
+footer
+{
+    display: flex;
+    background-color: black;
+}
+
+#yo
+{
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    height: 50px;
+}
+
+footer h1
+{
+    color : white;
+    margin-top: 10px;
+    margin-left: 500px;
+}
+
+footer ul
+{
+  margin-top: 10px;
+  color: white;
+    display: flex;
+    list-style-type: none;
+}
+
+footer li
+{
+    margin-right: 40px;
+}

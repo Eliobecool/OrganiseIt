@@ -19,6 +19,8 @@ header
     justify-content: space-between;
     align-items: center;
     background-color: black;
+      font-family: 'Roboto', sans-serif;
+
 }
 
 #log
@@ -38,6 +40,7 @@ header img
   color:black;
  position:relative;
  top:150px;
+
 }
 header h1
 {
