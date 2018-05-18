@@ -36,7 +36,8 @@ header img
 }
 #opac2 {
   color:black;
-  font-size:2em;
+ position:relative;
+ top:150px;
 }
 header h1
 {
