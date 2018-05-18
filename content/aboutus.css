@@ -1,0 +1,126 @@
+body
+{
+    background: black;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+    background: url(images/logo18.jpg);
+    background-size: 100%;
+}
+
+#bloc_page
+{
+    width: 900px;
+    margin: auto;
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+#log
+{
+    display: flex;
+    justify-content: flex-start;
+}
+
+header img
+{
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+
+}
+
+header h1
+{
+    margin: auto;
+    position: relative;
+    right:14px;
+    font-size: 1em;
+    color: white;
+}
+
+
+/* Navigation */
+nav ul
+{
+    display: flex;
+    list-style-type: none;
+}
+
+nav li
+{
+    margin-right: 15px;
+}
+
+nav a
+{
+    font-size: 1em;
+    color: white;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+nav a:hover
+{
+    color: #d6d4d2;
+}
+
+section
+{
+    display: flex;
+    justify-content: left-start;
+    color: white;
+}
+
+
+article
+{
+    margin-top: 10px;
+    margin-left: 100px;
+    color: white;
+    display: flex;
+}
+
+section article table
+{
+    margin-top: 10px;
+}
+
+footer
+{
+    position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+}
+
+#yo
+{
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    height: 50px;
+}
+
+footer h1
+{
+    color : white;
+    margin-top: 10px;
+}
+
+footer ul
+{
+    margin-top: 10px;
+    color: white;
+    display: flex;
+    list-style-type: none;
+}
+
+footer li
+{
+    margin-right: 30px;
+}

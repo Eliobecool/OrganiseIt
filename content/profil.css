@@ -1,8 +1,10 @@
 body
 {
+    background: black;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #181818;
-    background: black;
+    background: url(images/logo18.jpg);
+    background-size: 100%;
 }
 
 #bloc_page
@@ -36,7 +38,8 @@ header img
 header h1
 {
     margin: auto;
-    margin-left: 10px;
+    position: relative;
+    right:14px;
     font-size: 1em;
     color: white;
 }
@@ -89,8 +92,10 @@ section article table
 
 footer
 {
-    display: flex;
-    background-color: black;
+    position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
 }
 
 #yo

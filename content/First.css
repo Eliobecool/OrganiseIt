@@ -15,14 +15,25 @@ body
     align-items: center;
 }
 
-a 
+a
 {
     background-color: black;
     	display: flex;
 	justify-content: center;
 	border-radius: 40px;
+  text-decoration: none;
 }
-img 
+h1{
+
+  color:white;
+  position: relative;
+  font-size:5em;
+  top: 200px;
+  right:150px;
+
+
+}
+img
 {
 	width: 500px;
 }
