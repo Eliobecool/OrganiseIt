@@ -31,7 +31,7 @@
                     <h1>Creation of your agency :</h1>
     				<form method="get" action="createagency">
                         <p>
-
+                        	<div class="opa">
                             <label for="agency">Agency name</label> : <input type="text" name="agency" id="agency" />
                             <br/>
                             <label for="agencyusername">Agency profile username</label> : <input type="text" name="agencyusername" id="agencyusername" />
@@ -56,8 +56,9 @@
                             <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
                             <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
                             <br/>
-                            <div style="color:white" ><label for="budget">Maximum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget"/> <br/></div>
-                            <div style="color:white"><label for="telephonenumber">Maximum of people you can manage</label> : <input type="number" name="telephonenumber" id="people" /></div>
+                            <label for="budget">Maximum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget"/> <br/>
+                            <label for="telephonenumber">Maximum of people you can manage</label> : <input type="number" name="telephonenumber" id="people" />
+                        	</div>
                         </p>
                         <input id="bouton1" type="submit" value="Submit your agency !">
                     </form>
@@ -70,9 +71,11 @@
                      <h1>Log in as agency :</h1>
                     <form method="get" action="login">
                         <p>
+                        	<div class="opa">
                             <label for="username">Username</label> : <input type="text" name="username" id="username" />
                             <br/>
                             <label for="password">Password</label> : <input type="password" name="password" id="password" />
+                        </div>
                         </p>
                         <input id="bouton2" type="submit" value="Log in !">
                     </form>
