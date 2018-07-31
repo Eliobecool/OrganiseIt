@@ -1,8 +1,6 @@
-export class User 
-{
+export class User {
 
-  constructor(username, name, surname, adress, email, gender, password) 
-  {
+  constructor(username, name, surname, adress, email, gender, password) {
     this.username = username;
     this.name = name;
     this.surname = surname;
@@ -12,91 +10,71 @@ export class User
     this.password = password;
   }
 
- 
-
-
-
   /*---------------GETTERS-------------*/
 
-  getUsername() 
-  {
+  getUsername() {
     return this.username;
   }
 
-  getName() 
-  {
+  getName() {
     return this.name;
   }
 
-  getSurname() 
-  {
+  getSurname() {
     return this.surname;
   }
 
-  getAdress() 
-  {
+  getAdress() {
     return this.adress;
   }
 
-  getEmail() 
-  {
+  getEmail() {
     return this.email;
   }
 
-  getGender()
-  {
+  getGender() {
     return this.gender;
   }
 
-  getPassword() 
-  {
+  getPassword() {
     return this.password;
   }
 
- /*---------------SETTERS-------------*/
+  /*---------------SETTERS-------------*/
 
-  setUsername(aUsername) 
-  {
+  setUsername(aUsername) {
     this.username = aUsername;
   }
 
-  setName(aName) 
-  {
+  setName(aName) {
     this.name = aName;
   }
 
-  setSurname(aSurname) 
-  {
+  setSurname(aSurname) {
     this.surname = aSurname;
   }
 
-  setAdress(aAdress) 
-  {
+  setAdress(aAdress) {
     this.adress = aAdress;
   }
 
-  setEmail(aEmail) 
-  {
+  setEmail(aEmail) {
     this.email = aEmail;
   }
 
-  setGender(aGender)
-  {
+  setGender(aGender) {
     this.gender = aGender;
   }
 
-  setPassword(aPassword) 
-  {
+  setPassword(aPassword) {
     this.password = aPassword;
   }
 
+  /*---------------ToStrings-------------*/
 
- /*---------------ToStrings-------------*/
-
-  completeNameToString()
-  {
-  let str = [this.name,this.surname].join(" ");
-  return  str;
+  completeNameToString() {
+    let str = [this.name, this.surname].join(" ");
+    return str;
   }
 
 }
