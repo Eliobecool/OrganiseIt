@@ -1,100 +1,105 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="login.css" />
-        <title>Organize it !</title>
-    </head>
 
-    <body>
-    	<div id="bloc_page">
-    		<header>
-                <div id="log">
-                    <a href="home.html"><img src="images/logo.gif" alt="Logo Organize it"></a>
-                    <h1>rganize it</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="connected?orga.html">Your agency</a></li>
-                        <li><a href="connected?home.html">Info</a></li>
-                        <li><a href="connected?login.html">Log in/Create a profil</a></li>
-                        <li><a href="aboutus.html">About us</a></li>
-                    </ul>
-                </nav>
-            </header>
-    		<section>
-                <div id="rock">
-                </div>
-                <article>
-                <div id="create">
-                    <div id="ezi" ">
-                    <h1>Creation of your agency :</h1>
-    				<form method="get" action="createagency">
-                        <p>
-                            <div class="opa">
-                            <label for="agencyname">Agency name</label> : <input type="text" name="agencyname" id=agencyname" />
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="login.css">
+  <title>Organize it !</title>
+</head>
 
-                            <br/>
-                            <label for="agencyusername">Agency profile username</label> : <input type="text" name="agencyusername" id="agencyusername" />
-                            <br/>
-                            <label for="password">Password</label> : <input type="password" name="password" id="password" />
-                            <br/>
-                            <label for="confirmPassword"> Type Password Again</label> : <input type="confirmPassword" name="confirmPassword" id="confirmPassword" />
-                            <br/>
-                            <label for="email">Email</label> : <input type="email" name="email" id="email" />
-                            <br/>
-                            <label for="phone">Phone number</label> : <input type="tel" name="phone" id="phone" />
-                            <br/>
-                            What kind(s) of event do you organize ?
-                            <br/>
-                            <input type="checkbox" name="mariage" id="mariage" /> <label for="mariage">Wedding</label><br />
-                            <input type="checkbox" name="anniversaire" id="anniversaire" /> <label for="anniversaire">Birthday</label><br />
-                            <input type="checkbox" name="naissance" id="naissance" /> <label for="naissance">Birth</label><br />
-                            <input type="checkbox" name="bapteme" id="bapteme" /> <label for="bapteme">Baptism</label><br />
-                            <input type="checkbox" name="goodnews" id="goodnews" /> <label for="goodnews">Goodnews</label><br />
-                            <input type="checkbox" name="marketing" id="marketing" /> <label for="marketing">Marketing event</label><br />
-                            <input type="checkbox" name="sport" id="sport" /> <label for="sport">Sport event</label><br />
-                            <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
-                            <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
-                            <br/>
-                            <label for="budget">Maximum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget"/> <br/>
-                            <label for="telephonenumber">Maximum of people you can manage</label> : <input type="number" name="telephonenumber" id="people" />
-                        	</div>
-                        </p>
-                        <input id="bouton1" type="submit" value="Submit your agency !">
-                    </form>
-                    </div>
-                </div>
+<body>
+  <div id="bloc_page">
+    <header>
+      <div id="log">
+        <a href="home.html"><img src="images/logo.gif" alt="Logo Organize it"></a>
+        <h1>rganize it</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="connected?orga.html">Your agency</a></li>
+          <li><a href="connected?home.html">Info</a></li>
+          <li><a href="connected?login.html">Log in/Create a profil</a></li>
+          <li><a href="aboutus.html">About us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <div id="rock">
+      </div>
+      <article>
+        <div id="create">
+          <div id="ezi">
+            <h1>Creation of your agency :</h1>
+            <form method="get" action="createagency">
+              <p>
+                <div class="opa">
+                  <label for="agencyname">Agency name</label> : <input type="text" name="agencyname" id="agencyname" />
 
-                <div id="login">
-                    <div id="ez">
-                     <h1>Log in as agency :</h1>
-                    <form method="get" action="login">
-                        <p>
-                        	<div class="opa">
-                            <label for="username">Username</label> : <input type="text" name="username" id="username" />
-                            <br/>
-                            <label for="password">Password</label> : <input type="password" name="password" id="password" />
-                            </div>
-                        </p>
-                        <input id="bouton2" type="submit" value="Log in !">
-                    </form>
-                    </div>
+                  <br/>
+                  <label for="agencyusername">Agency profile username</label> : <input type="text" name="agencyusername" id="agencyusername" />
+                  <br/>
+                  <label for="password">Password</label> : <input type="password" name="password" id="password" />
+                  <br/>
+                  <label for="confirmPassword"> Type Password Again</label> : <input type="confirmPassword" name="confirmPassword" id="confirmPassword" />
+                  <br/>
+                  <label for="email">Email</label> : <input type="email" name="email" id="email" />
+                  <br/>
+                  <label for="phone">Phone number</label> : <input type="tel" name="phone" id="phone" />
+                  <br/> What kind(s) of event do you organize ?
+                  <br/>
+                  <input type="checkbox" name="mariage" id="mariage" /> <label for="mariage">Wedding</label><br />
+                  <input type="checkbox" name="anniversaire" id="anniversaire" /> <label for="anniversaire">Birthday</label><br />
+                  <input type="checkbox" name="naissance" id="naissance" /> <label for="naissance">Birth</label><br />
+                  <input type="checkbox" name="bapteme" id="bapteme" /> <label for="bapteme">Baptism</label><br />
+                  <input type="checkbox" name="goodnews" id="goodnews" /> <label for="goodnews">Goodnews</label><br />
+                  <input type="checkbox" name="marketing" id="marketing" /> <label for="marketing">Marketing event</label><br />
+                  <input type="checkbox" name="sport" id="sport" /> <label for="sport">Sport event</label><br />
+                  <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
+                  <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
+                  <br/>
+                  <label for="budget">Maximum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget" /> <br/>
+                  <label for="telephonenumber">Maximum of people you can manage</label> : <input type="number" name="telephonenumber" id="people" />
                 </div>
-            </article>
-    		</section>
-    		<footer>
-                <div id="yo">
-                <h1>Contact</h1>
-                <ul>
-                    <li><p>02.452.63.25</p></li>
-                    <li><p>contact@organizeit.be</p></li>
-                    <li><a href="#"><img src="images/facebook.png" width="auto" height="30px" alt="facebook"></a></li>
-                    <li><a href="#"><img src="images/twitter.png" width="auto" height="30px" alt="twitter"></a></li>
-                    <li><a href="#"><img src="images/insta.png" width="auto" height="30px" alt="instagram"></a></li>
-                </ul>
+              </p>
+              <input id="bouton1" type="submit" value="Submit your agency !">
+            </form>
+          </div>
+        </div>
+
+        <div id="login">
+          <div id="ez">
+            <h1>Log in as agency :</h1>
+            <form method="get" action="login">
+              <p>
+                <div class="opa">
+                  <label for="username">Username</label> : <input type="text" name="username" id="login_username" />
+                  <br/>
+                  <label for="password">Password</label> : <input type="password" name="password" id="login_password" />
                 </div>
-            </footer>
-    	</div>
-    </body>
+              </p>
+              <input id="bouton2" type="submit" value="Log in !">
+            </form>
+          </div>
+        </div>
+      </article>
+    </section>
+    <footer>
+      <div id="yo">
+        <h1>Contact</h1>
+        <ul>
+          <li>
+            <p>02.452.63.25</p>
+          </li>
+          <li>
+            <p>contact@organizeit.be</p>
+          </li>
+          <li><a href="#"><img src="images/facebook.png" width="auto" height="30px" alt="facebook"></a></li>
+          <li><a href="#"><img src="images/twitter.png" width="auto" height="30px" alt="twitter"></a></li>
+          <li><a href="#"><img src="images/insta.png" width="auto" height="30px" alt="instagram"></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>
