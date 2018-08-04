@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -23,7 +23,9 @@
       </div>
       <nav>
         <ul>
+          {{#currentUsername}}
           <li><a href="profil.html">{{currentUsername}}</a></li>
+          {{/currentUsername}}
           <li><a href="orga.html">Your agency</a></li>
           <li><a href="login.html">Log in/Create a profile</a></li>
           <li><a href="aboutus.html">About us</a></li>
@@ -35,8 +37,7 @@
         <div id="start"><a href="login.html"> Get started ! </a></div>
         <div id="aboutus">
           <p>
-            <p>
-              Organize it is a organisation specialises in connecting the bridge between event planner and costumer. Our aim is to make that connection as easy and seemless as possible !</p>
+              Organize it is a organisation specialises in connecting the bridge between event planner and costumer. Our aim is to make that connection as easy and seemless as possible !
           </p>
         </div>
         <div id="opac"></div>
