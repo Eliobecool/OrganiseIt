@@ -142,7 +142,6 @@ function createUser(req, res, next, newUser, page, success) {
       currentUserProfile.gender = newUser.gender;
       currentUserProfile.password = newUser.password;
 
-      console.log("create user return true");
       success();
     }
   });
@@ -230,10 +229,8 @@ app.get('/createagency', function(req, res, next) {
 
         dbo.collection("agencies").insert(newAgency, function(err, res) {
           if (err) throw err;
-          console.log("Number of users inserted: " + res.insertedCount);
         });
 
-        console.log(currentUserProfile);
         res.render('profil.html', {
           currentUserProfile: currentUserProfile
         });
@@ -244,6 +241,13 @@ app.get('/createagency', function(req, res, next) {
 });
 
 app.get('/agencies', function(req, res, next) {
+
+  var search = {
+    type: req.query.type,
+    people : req.query.people,
+    budget : req.query.budget
+  };
+
   // var searchQuery = {username : req.query.username};
   // console.log(req.query.username);
 
@@ -251,8 +255,15 @@ app.get('/agencies', function(req, res, next) {
    * INSERT A NEW USER INTO THE DATABASE
    * FIRST CHECK IF THE USER ALREADY EXISTS
    */
-  dbo.collection("agencies").find({}).toArray(function(err, result) {
-    console.log(result);
+
+   var toFind = {
+     people: { $gte: search.people },
+     maxbudget: { $lte: search.budget }
+   };
+   toFind[search.type] = true;
+
+  dbo.collection("agencies").find(toFind).toArray(function(err, result) {
+    res.render('result.html', {agencies: result});
   });
 });
 
@@ -267,9 +278,6 @@ app.get('/login', function(req, res, next) {
     if (err) throw err;
 
     if (doc != null && doc.password == req.query.password) {
-
-      console.log(doc);
-
       currentUserProfile.username = doc.username;
       currentUserProfile.agencyname = doc.agencyname || "";
       currentUserProfile.type = doc.type;
