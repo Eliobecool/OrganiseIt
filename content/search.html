@@ -18,10 +18,16 @@
       </div>
       <nav>
         <ul>
+          <li><a href="search.html">Search</a></li>
+          {{#currentUserProfile.username}}
+          <li><a href="profil.html">{{currentUserProfile.username}}</a></li>
+          {{/currentUserProfile.username}}
+          {{#currentUserProfile.agencyname}}
           <li><a href="orga.html">Your agency</a></li>
-          <li><a href="homeco.html#info">Info</a></li>
-          <li><a href="profil.html">'Username'</a></li>
-          <li><a href="home.html">Sign out</a></li>
+          {{/currentUserProfile.agencyname}}
+          {{^currentUserProfile.username}}
+          <li><a href="login.html">Log in/Create a profile</a></li>
+          {{/currentUserProfile.username}}
           <li><a href="aboutus.html">About us</a></li>
         </ul>
       </nav>

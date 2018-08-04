@@ -23,10 +23,13 @@
       </div>
       <nav>
         <ul>
+          <li><a href="search.html">Search</a></li>
           {{#currentUsername}}
           <li><a href="profil.html">{{currentUsername}}</a></li>
           {{/currentUsername}}
+          {{#currentUserProfile.agencyname}}
           <li><a href="orga.html">Your agency</a></li>
+          {{/currentUserProfile.agencyname}}
           {{^currentUsername}}
           <li><a href="login.html">Log in/Create a profile</a></li>
           {{/currentUsername}}

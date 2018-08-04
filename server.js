@@ -32,17 +32,17 @@ app.set('views', 'content');
 
 app.get('/login.html', function(req, res, next) {
   res.render('login.html', {
-    currentUsername: currentUserProfile.username
+    currentUserProfile: currentUserProfile
   });
 });
 app.get('/home.html', function(req, res, next) {
   res.render('home.html', {
-    currentUsername: currentUserProfile.username
+    currentUserProfile: currentUserProfile
   });
 });
 app.get('/orga.html', function(req, res, next) {
   res.render('orga.html', {
-    currentUsername: currentUserProfile.username
+    currentUserProfile: currentUserProfile
   });
 });
 app.get('/profil.html', function(req, res, next) {
@@ -52,7 +52,12 @@ app.get('/profil.html', function(req, res, next) {
 });
 app.get('/aboutus.html', function(req, res, next) {
   res.render('aboutus.html', {
-    currentUsername: currentUserProfile.username
+    currentUserProfile: currentUserProfile
+  });
+});
+app.get('/search.html', function(req, res, next) {
+  res.render('search.html', {
+    currentUserProfile: currentUserProfile
   });
 });
 
