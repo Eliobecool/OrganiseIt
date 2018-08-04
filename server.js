@@ -189,7 +189,28 @@ app.get('/createagency', function(req,res,next) {
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("organizeitdb");
-        var newAgency = {agencyname: req.query.agencyname, username : req.query.username, email: req.query.email, phone: req.query.phone, password: req.query.password};
+
+        var newAgency = {
+          agencyname: req.query.agencyname,
+          agencyusername : req.query.username,
+          email: req.query.email,
+          phone: req.query.phone,
+          password: req.query.password,
+
+          mariage: (req.query.mariage && true) || false,
+          anniversaire: (req.query.anniversaire && true) || false,
+          music: (req.query.music && true) || false,
+          naissance: (req.query.naissance && true) || false,
+          bapteme: (req.query.bapteme && true) || false,
+          goodnews: (req.query.goodnews && true) || false,
+          marketing: (req.query.marketing && true) || false,
+          sport: (req.query.sport && true) || false,
+          autre: (req.query.autre && true) || false,
+
+          maxbudget: req.query.maxbudget,
+          people: req.query.people
+        };
+
         // var searchQuery = {username : req.query.username};
         // console.log(req.query.username);
 
@@ -202,6 +223,7 @@ app.get('/createagency', function(req,res,next) {
             /*
             * IF THE USER ALREADY EXISTS, THEN OUTPUTS AN ERROR MESSAGE
             */
+            console.log(result);
             if (result.length>0)
             {
                 errorCreate = "This agency already exists. Please find another username!";
@@ -223,26 +245,10 @@ app.get('/createagency', function(req,res,next) {
                 errorCreate = "";
                 errorCreate2 = "";
                 errorConnect = "";
-                dbo.collection("users").insert(newUser, function(err, res)
+                dbo.collection("agencies").insert(newAgency, function(err, res)
                 {
                     if (err) throw err;
                     // console.log("Number of users inserted: " + res.insertedCount);
-                });
-
-                dbo.collection("users").find({username : req.query.username}).toArray(function(err, result)
-                {
-
-                    currentUserProfile.username = result[0].username;
-                    currentUserProfile.type = result[0].type;
-                    currentUserProfile.name = result[0].name;
-                    currentUserProfile.surname = result[0].surname;
-                    currentUserProfile.adress = result[0].adress;
-                    currentUserProfile.email = result[0].email;
-                    currentUserProfile.gender = result[0].gender;
-                    currentUserProfile.password = result[0].password;
-
-                    res.render('profil.html', {username : result[0].username, type: result[0].type, name: result[0].name, surname: result[0].surname, adress: result[0].adress, email: result[0].email, gender: result[0].ender, password: result[0].password});
-                    dbo.close();
                 });
 
             }

@@ -27,7 +27,9 @@
           <li><a href="profil.html">{{currentUsername}}</a></li>
           {{/currentUsername}}
           <li><a href="orga.html">Your agency</a></li>
+          {{^currentUsername}}
           <li><a href="login.html">Log in/Create a profile</a></li>
+          {{/currentUsername}}
           <li><a href="aboutus.html">About us</a></li>
         </ul>
       </nav>
