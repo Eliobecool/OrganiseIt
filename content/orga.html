@@ -57,10 +57,22 @@
                   <input type="checkbox" name="music" id="music" /> <label for="music">Music event</label><br />
                   <input type="checkbox" name="autre" id="other" /> <label for="other">Other</label><br />
                   <br/>
-                  <label for="budget">Maximum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget" /> <br/>
+                  <label for="budget">Minimum budget in €</label> : <input type="number" name="maxbudget" id="maxbudget" /> <br/>
                   <label for="telephonenumber">Maximum of people you can manage</label> : <input type="number" name="people" id="people" />
                 </div>
               </p>
+              {{#errorMessageCreate}}
+              <div id="errorCreate" style="color:red ">
+                <p> {{ errorMessageCreate }} </p>
+              </div>
+              {{/errorMessageCreate}}
+
+              {{#errorMessageCreate2}}
+              <div id="errorCreate2" style="color:red ">
+                <p> {{ errorMessageCreate2 }} </p>
+              </div>
+              {{/errorMessageCreate2}}
+
               <input id="bouton1" type="submit" value="Submit your agency !">
             </form>
           </div>
