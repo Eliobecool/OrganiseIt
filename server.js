@@ -98,21 +98,12 @@ MongoClient.connect(url, function(err, db) {
 /*-------------------------------------------------------*/
 
 /*------------------CREATE ACCOUNT LISTENER---------------------*/
-app.get('/createaccount', function(req, res, next) {
+function createUser(req, res, next, newUser, page) {
 
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("organizeitdb");
-    var newUser = {
-      username: req.query.username,
-      type: "client",
-      name: req.query.name,
-      surname: req.query.surname,
-      adress: req.query.adress,
-      email: req.query.email,
-      gender: req.query.gender,
-      password: req.query.password
-    };
+
     // var searchQuery = {username : req.query.username};
     // console.log(req.query.username);
 
@@ -128,7 +119,7 @@ app.get('/createaccount', function(req, res, next) {
        */
       if (result.length > 0) {
         errorCreate = "This username already exists. Please find another username!";
-        res.render('login.html', {
+        res.render(page, {
           errorMessageCreate: errorCreate
         });
       }
@@ -137,7 +128,7 @@ app.get('/createaccount', function(req, res, next) {
        */
       else if (req.query.confirmPassword != req.query.password) {
         errorCreate2 = "The passwords do not match!";
-        res.render('login.html', {
+        res.render(page, {
           errorMessageCreate2: errorCreate2
         });
       }
@@ -165,22 +156,37 @@ app.get('/createaccount', function(req, res, next) {
           currentUserProfile.email = result[0].email;
           currentUserProfile.gender = result[0].gender;
           currentUserProfile.password = result[0].password;
-
-          res.render('profil.html', {
-            username: result[0].username,
-            type: result[0].type,
-            name: result[0].name,
-            surname: result[0].surname,
-            adress: result[0].adress,
-            email: result[0].email,
-            gender: result[0].ender,
-            password: result[0].password
-          });
           dbo.close();
         });
 
       }
     });
+  });
+}
+
+app.get('/createaccount', function(req, res, next) {
+  var newUser = {
+    username: req.query.username,
+    type: "client",
+    name: req.query.name,
+    surname: req.query.surname,
+    adress: req.query.adress,
+    email: req.query.email,
+    gender: req.query.gender,
+    password: req.query.password
+  };
+
+  createUser(req, res, next, newUser, "login.html");
+
+  res.render('profil.html', {
+    username: result[0].username,
+    type: result[0].type,
+    name: result[0].name,
+    surname: result[0].surname,
+    adress: result[0].adress,
+    email: result[0].email,
+    gender: result[0].ender,
+    password: result[0].password
   });
 });
 
@@ -245,16 +251,28 @@ app.get('/createagency', function(req,res,next) {
                 errorCreate = "";
                 errorCreate2 = "";
                 errorConnect = "";
+
+                var newUser = {
+                  username: newAgency.agencyusername,
+                  type: "agency",
+                  email: newAgency.email,
+                  password: newAgency.password
+                };
+
+                createUser(req, res, next, newUser, "orga.html");
+
                 dbo.collection("agencies").insert(newAgency, function(err, res)
                 {
                     if (err) throw err;
                     // console.log("Number of users inserted: " + res.insertedCount);
                 });
 
+                res.render('orga.html');
             }
         });
     });
 });
+
 
 /*------------------LOGIN ACCOUNT LISTENER---------------------*/
 app.get('/login', function(req, res, next) {
