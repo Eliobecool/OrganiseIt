@@ -24,15 +24,15 @@
       <nav>
         <ul>
           <li><a href="search.html">Search</a></li>
-          {{#currentUsername}}
-          <li><a href="profil.html">{{currentUsername}}</a></li>
-          {{/currentUsername}}
-          {{#currentUserProfile.agencyname}}
-          <li><a href="orga.html">Your agency</a></li>
+          {{#currentUserProfile.username}}
+          <li><a href="profil.html">{{currentUserProfile.username}}</a></li>
+          {{/currentUserProfile.username}}
+          {{^currentUserProfile.username}}
+          <li><a href="login.html">Log in/Create a user profile</a></li>
+          {{/currentUserProfile.username}}
+          {{^currentUserProfile.agencyname}}
+          <li><a href="orga.html">Log in/Create a agency profile</a></li>
           {{/currentUserProfile.agencyname}}
-          {{^currentUsername}}
-          <li><a href="login.html">Log in/Create a profile</a></li>
-          {{/currentUsername}}
           <li><a href="aboutus.html">About us</a></li>
         </ul>
       </nav>

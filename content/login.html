@@ -26,8 +26,11 @@
           <li><a href="orga.html">Your agency</a></li>
           {{/currentUserProfile.agencyname}}
           {{^currentUserProfile.username}}
-          <li><a href="login.html">Log in/Create a profile</a></li>
+          <li><a href="login.html">Log in/Create a user profile</a></li>
           {{/currentUserProfile.username}}
+          {{^currentUserProfile.agencyname}}
+          <li><a href="orga.html">Log in/Create a agency profile</a></li>
+          {{/currentUserProfile.agencyname}}
           <li><a href="aboutus.html">About us</a></li>
         </ul>
       </nav>
@@ -82,7 +85,6 @@
               <div id="errorLogin" style="color:red ">
                 <p> {{ errorMessageLogin }} </p>
               </div>
-
               <input id="bouton2" type="submit" value="Log in !">
             </form>
           </div>

@@ -60,6 +60,11 @@ app.get('/search.html', function(req, res, next) {
     currentUserProfile: currentUserProfile
   });
 });
+app.get('/result.html', function(req, res, next) {
+  res.render('result.html', {
+    currentUserProfile: currentUserProfile
+  });
+});
 
 /*-------------------------------------------------------*/
 /*---------------------MONGOCLIENT-----------------------*/
@@ -268,7 +273,7 @@ app.get('/agencies', function(req, res, next) {
    toFind[search.type] = true;
 
   dbo.collection("agencies").find(toFind).toArray(function(err, result) {
-    res.render('result.html', {agencies: result});
+    res.render('result.html', {agencies: result, currentUserProfile: currentUserProfile});
   });
 });
 
@@ -298,7 +303,7 @@ app.get('/login', function(req, res, next) {
       });
 
     } else if (doc == null || doc.name != req.query.username || doc.password != req.query.password) {
-      res.render('login.html', {
+      res.render(req.header('referer').substring(req.header('referer').lastIndexOf('/')+1), {
         errorMessageLogin: "The user neither exists or the password is incorrect. Please try again."
       });
     }
