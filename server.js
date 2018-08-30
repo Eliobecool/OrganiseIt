@@ -35,6 +35,11 @@ app.get('/login.html', function(req, res, next) {
     currentUserProfile: currentUserProfile
   });
 });
+app.get('/signin.html', function(req, res, next) {
+  res.render('signin.html', {
+    currentUserProfile: currentUserProfile
+  });
+});
 app.get('/home.html', function(req, res, next) {
   res.render('home.html', {
     currentUserProfile: currentUserProfile
